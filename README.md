@@ -12,7 +12,7 @@
     - [Was wir für die Zukunft mitnehmen?](#was-wir-für-die-zukunft-mitnehmen)
   - [Einzelreflexion](#einzelreflexion)
     - [David Provenzano](#david-provenzano)
-    - [Ruven Nobel](#ruven-nobel)
+    - [Aulon Gashi](#aulon-gashi)
     - [Yves Jaros](#yves-jaros)
   - [Visualisierung](#visualisierung)
   - [Testfälle](#testfälle)
@@ -26,6 +26,7 @@
 ### Ziel des Projekts
 
 ## Vorgehen
+
 
 ## Gruppenreflexion
 ### Was ist uns gut gelungen?  
@@ -43,7 +44,7 @@
 
 - Was nehme ich für die Zukunft mit?  
 
-### Ruven Nobel
+### Aulon Gashi
 
 - Was ist mir gut gelungen?  
 
