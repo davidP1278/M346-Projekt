@@ -59,7 +59,7 @@ public class Function
 
                 var putRequest = new PutObjectRequest
                 {
-                    BucketName = "DEIN-OUT-BUCKET-NAME", // OutBucket Name
+                    BucketName = "yvauda-output-bckt",
                     Key = s3Event.Object.Key + ".json",
                     ContentBody = json
                 };
