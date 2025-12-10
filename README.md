@@ -15,6 +15,7 @@
     - [Aulon Gashi](#aulon-gashi)
     - [Yves Jaros](#yves-jaros)
   - [Visualisierung](#visualisierung)
+    - [Flowchart - Hauptprozess](#flowchart---hauptprozess)
   - [Testfälle](#testfälle)
   - [Ausführung des Projektes](#ausführung-des-projektes)
     - [Was benötigt man?](#was-benötigt-man)
@@ -62,6 +63,9 @@
 
 ## Visualisierung
 
+### Flowchart - Hauptprozess
+![flowchart-hauptprozess](img/facerecognition_lambda_v1.png)
+
 ## Testfälle 
 
 ## Ausführung des Projektes
@@ -70,4 +74,5 @@
 ### Wie führt man es aus?
 
 ## Quellen
-- Conventional Commits, 04.12.2024, https://www.conventionalcommits.org/en/v1.0.0/
+- Conventional Commits, 04.12.2025, https://www.conventionalcommits.org/en/v1.0.0/
+- PlantUML, 10.12.2025, https://plantuml.com/en/
