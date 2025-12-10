@@ -3,6 +3,8 @@ using Amazon.Lambda.S3Events;
 using Amazon.Lambda.TestUtilities;
 using Amazon.S3;
 using Amazon.S3.Model;
+using Amazon.Rekognition;
+using Amazon.Rekognition.Model;
 using Moq;
 using Xunit;
 
@@ -21,7 +23,13 @@ public class FunctionTest
             .Setup(x => x.GetObjectMetadataAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<CancellationToken>()))
             .Returns(Task.FromResult(getObjectMetadataResponse));
 
-        // Setup the S3 event object that S3 notifications would create with the fields used by the Lambda function.
+        var mockRekognitionClient = new Mock<IAmazonRekognition>();
+        mockRekognitionClient
+            .Setup(x => x.RecognizeCelebritiesAsync(
+                It.IsAny<RecognizeCelebritiesRequest>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new RecognizeCelebritiesResponse());
+
         var s3Event = new S3Event
         {
             Records = new List<S3Event.S3EventNotificationRecord>
@@ -30,21 +38,24 @@ public class FunctionTest
                 {
                     S3 = new S3Event.S3Entity
                     {
-                        Bucket = new S3Event.S3BucketEntity {Name = "s3-bucket" },
-                        Object = new S3Event.S3ObjectEntity {Key = "text.txt" }
+                        Bucket = new S3Event.S3BucketEntity { Name = "s3-bucket" },
+                        Object = new S3Event.S3ObjectEntity { Key = "text.txt" }
                     }
                 }
             }
         };
 
-        // Invoke the lambda function and confirm the content type was returned.
         ILambdaLogger testLambdaLogger = new TestLambdaLogger();
         var testLambdaContext = new TestLambdaContext
         {
             Logger = testLambdaLogger
         };
 
-        var function = new Function(mockS3Client.Object);
+        var function = new Function(
+            mockS3Client.Object,
+            mockRekognitionClient.Object
+        );
+
         await function.FunctionHandler(s3Event, testLambdaContext);
 
         Assert.Equal("text/plain", ((TestLambdaLogger)testLambdaLogger).Buffer.ToString().Trim());
